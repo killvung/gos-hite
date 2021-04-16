@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/joho/godotenv"
 )
@@ -26,6 +27,10 @@ func main() {
 	if value == "" || value == "dev" {
 		loadFromDotEnv()
 	}
-	println(getEnv("ENV"))
-	println(getEnv("FOO"))
+	fmt.Println(getEnv("ENV"))
+	var foo string = getEnv("FOO")
+	fmt.Println(foo)
+	var sb strings.Builder
+	sb.WriteString(foo)
+	fmt.Println(sb.String())
 }
