@@ -27,5 +27,5 @@ func main() {
 		loadFromDotEnv()
 	}
 	println(getEnv("ENV"))
-	println(getEnv("SECRET"))
+	println(getEnv("FOO"))
 }
