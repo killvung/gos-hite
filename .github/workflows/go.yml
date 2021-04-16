@@ -20,3 +20,4 @@ jobs:
       env:
           ENV: PROD
           FOO: ${{ secrets.SECRET }}
+      run: ./go-dotenv-example
