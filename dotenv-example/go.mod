@@ -1,4 +1,4 @@
-module go-hello-world
+module go-dotenv-example
 
 go 1.15
 
