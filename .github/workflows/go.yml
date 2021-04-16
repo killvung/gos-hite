@@ -17,6 +17,7 @@ jobs:
       run: 
         go build && ls
     - name: Run go-dotenv-example
+      working-directory: ./dotenv-example
       env:
           ENV: PROD
           FOO: ${{ secrets.SECRET }}
