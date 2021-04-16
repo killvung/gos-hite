@@ -15,5 +15,10 @@ jobs:
     - name: Nye 
       working-directory: ./dotenv-example
       run: 
-        go build |
-        ls
+        go build && ls
+    - name: Run go-dotenv-example
+      working-directory: ./dotenv-example
+      env:
+          ENV: PROD
+          FOO: ${{ secrets.SECRET }}
+      run: ./go-dotenv-example
