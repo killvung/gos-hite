@@ -1,5 +1,6 @@
 app:
   foo: "bar"
+  foo2: PREFIX_BAR
 
 database:
   password: "password"

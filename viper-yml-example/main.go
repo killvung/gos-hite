@@ -13,7 +13,8 @@ type Configuration struct {
 }
 
 type App struct {
-	Foo string
+	Foo  string
+	Foo2 string
 }
 
 type Database struct {
@@ -23,7 +24,9 @@ type Database struct {
 func main() {
 	viper.AddConfigPath(".")
 	viper.SetConfigName("config")
+	viper.SetEnvPrefix("PREFIX")
 	viper.SetConfigType("yaml")
+	viper.AutomaticEnv()
 
 	if err := viper.ReadInConfig(); err != nil { // Handle errors reading the config file
 		log.Fatalf("Fatal error config file: %s \n", err)
@@ -34,7 +37,8 @@ func main() {
 	if err := viper.Unmarshal(&C); err != nil {
 		panic(fmt.Errorf("unable to decode into struct, %v", err))
 	}
+	C.App.Foo2 = viper.GetString("PORT")
 
-	fmt.Println(C.App)
 	fmt.Println(C.Database)
+	fmt.Println(C.App.Foo2)
 }
