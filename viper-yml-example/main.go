@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"strings"
 
 	"github.com/spf13/viper"
 )
@@ -26,11 +27,13 @@ func main() {
 	viper.SetConfigName("config")
 	viper.SetEnvPrefix("PREFIX")
 	viper.SetConfigType("yaml")
+	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 	viper.AutomaticEnv()
 
 	if err := viper.ReadInConfig(); err != nil { // Handle errors reading the config file
 		log.Fatalf("Fatal error config file: %s \n", err)
 	}
+	fmt.Println(viper.AllKeys())
 	var C Configuration
 	// Uncomment this to check whether viper has read the config from yaml correctly
 	// fmt.Println(viper.GetString("app"))

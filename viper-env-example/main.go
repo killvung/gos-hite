@@ -10,11 +10,11 @@ import (
 type Configuration struct {
 	SEEKING string
 	FOO     string
+	NO      string
 }
 
 func main() {
-	viper.AddConfigPath(".")
-	viper.SetConfigFile("app.env")
+	viper.SetConfigFile("./app.env")
 	viper.SetConfigType("env")
 	viper.SetEnvPrefix("APP")
 	viper.AutomaticEnv()
@@ -27,10 +27,12 @@ func main() {
 	if err := viper.Unmarshal(&C); err != nil {
 		log.Fatalf("Unable to decode to struct: %s", err)
 	}
-
+	fmt.Println(viper.AllKeys())
 	fmt.Println("Hello world")
 	// If you run with APP_SEEKING=Calling, this will print Calling
 	fmt.Println(C.SEEKING)
 	// Print Bar
 	fmt.Println(C.FOO)
+	// If you run with APP_No=You, this will print You
+	fmt.Println(C.NO)
 }
